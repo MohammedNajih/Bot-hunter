@@ -8,7 +8,7 @@ import logging
 from config import *
 import json
 from flask import Flask, request
-uid = uuid.uuid4()
+
 bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
 logger = telebot.logger
@@ -59,6 +59,7 @@ def masg(call):
 		gm = 0
 		ins = 0
 		while True:
+			uid = uuid4()
 			user = Faker().email().split("@")[0]
 			email = user+"@gmail.com"
 			url = 'https://android.clients.google.com/setup/checkavail'
@@ -74,23 +75,25 @@ def masg(call):
 				if ('"error_type":"bad_password"') in req:
 					ins+=1
 					ok+=1
-					info=f"https://soud.me/api/Instagram?username={user}"
-					req= requests.get(info).json()
-					bio=req["info"]["bio"]
-					name=req["info"]["name"]
-					followers=req["info"]["followers"]
-					following=req["info"]["following"]
-					isv = req["info"]["verified"]
-					isp = req["info"]["private"]
-					id=req["info"]["id"]
-					link = req["info"]["url"]
-					user=req["info"]["username"]
-					resp = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")  
-					reep = resp.json()
-					date = reep['data']
-					GDO =(f"""𝙷𝙸 𝙸𝙽f𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 𝙰𝙲𝙲𝙾𝚄𝙽𝚃 ⎙\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ɴᴀᴍᴇ » {name}\n⌯ ᴜsᴇʀɴᴀᴍᴇ » {user}\n⌯ ғᴏʟʟᴏᴡᴇʀs » {followers}\n⌯ ғᴏʟʟᴏᴡɪɴɢ » {following}\n⌯ ᴅᴀᴛᴇ » {date}\n⌯ ɪᴅ » {id}\n⌯ ᴘᴏsᴛs » {posts}\n⌯ ᴠᴇʀɪғɪᴇᴅ » {isv}\n⌯ ᴘʀɪvᴀᴛᴇ » {isp}\n⌯ ʙɪᴏ » {bio}\n⌯ 𝙻𝙸𝙽𝚔 » https://www.instagram.com/{user}\n⌯ 𝙻𝙸𝙽𝚔 » {link}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •""")
-					bot.send_message(call.message.chat.id,GDO)
-					
+					try:
+						info=f"https://soud.me/api/Instagram?username={user}"
+						req= requests.get(info).json()
+						bio=req["info"]["bio"]
+						name=req["info"]["name"]
+						followers=req["info"]["followers"]
+						following=req["info"]["following"]
+						isv = req["info"]["verified"]
+						isp = req["info"]["private"]
+						id=req["info"]["id"]
+						link = req["info"]["url"]
+						user=req["info"]["username"]
+						resp = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")  
+						reep = resp.json()
+						date = reep['data']
+						GDO =(f"""𝙷𝙸 𝙸𝙽f𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 𝙰𝙲𝙲𝙾𝚄𝙽𝚃 ⎙\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ɴᴀᴍᴇ » {name}\n⌯ ᴜsᴇʀɴᴀᴍᴇ » {user}\n⌯ ғᴏʟʟᴏᴡᴇʀs » {followers}\n⌯ ғᴏʟʟᴏᴡɪɴɢ » {following}\n⌯ ᴅᴀᴛᴇ » {date}\n⌯ ɪᴅ » {id}\n⌯ ᴘᴏsᴛs » {posts}\n⌯ ᴠᴇʀɪғɪᴇᴅ » {isv}\n⌯ ᴘʀɪvᴀᴛᴇ » {isp}\n⌯ ʙɪᴏ » {bio}\n⌯ 𝙻𝙸𝙽𝚔 » https://www.instagram.com/{user}\n⌯ 𝙻𝙸𝙽𝚔 » {link}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •""")
+						bot.send_message(call.message.chat.id,GDO)
+					except:
+						bot.send_message(call.message.chat.id,f'𝙷𝙸 𝙸𝙽f𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 𝙰𝙲𝙲𝙾𝚄𝙽𝚃 ⎙\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ 𝐄𝐌𝐀𝐈𝐋 » {email}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •')
 			else:
 				sk+=1
 				mas = types.InlineKeyboardMarkup(row_width=2)
