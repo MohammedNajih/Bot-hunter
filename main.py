@@ -8,7 +8,7 @@ import logging
 from config import *
 import json
 from flask import Flask, request
-
+uid = uuid.uuid4()
 bot = telebot.TeleBot(BOT_TOKEN)
 server = Flask(__name__)
 logger = telebot.logger
@@ -59,7 +59,6 @@ def masg(call):
 		gm = 0
 		ins = 0
 		while True:
-			uid = uuid.uuid4()
 			user = Faker().email().split("@")[0]
 			email = user+"@gmail.com"
 			url = 'https://android.clients.google.com/setup/checkavail'
@@ -104,7 +103,7 @@ def masg(call):
 				bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="جاري الفحص النقاط ",reply_markup=mas)
 				
 	elif call.data =="F2":
-		    bot.send_message(message.chat.id, f" FUCTION SOON ️",reply_markup=mas)
+		bot.send_message(message.chat.id, f" FUCTION SOON ️",reply_markup=mas)
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
     json_string = request.get_data().decode("utf-8")
