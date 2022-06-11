@@ -106,7 +106,7 @@ def masg(call):
 						bot.send_message(call.message.chat.id,text=f"""\n⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ᴇᴍᴀɪʟ » {azoz}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDOTools .""")
 				else:
 					bn += 1
- 		 	else:
+			else:
  		 		bd += 1
  		 		mas = types.InlineKeyboardMarkup(row_width=2)
 				A = types.InlineKeyboardButton(f'▩ 𝙷𝙸𝚃 » {ht}',callback_data="1x")
