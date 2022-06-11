@@ -6,7 +6,6 @@ from telebot import types
 from user_agent import generate_user_agent
 import logging
 from config import *
-from InstagramIG import *
 import json
 from flask import Flask, request
 
