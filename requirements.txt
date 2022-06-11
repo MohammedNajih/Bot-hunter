@@ -5,4 +5,3 @@ requests
 uuid
 faker
 names
-secrets
