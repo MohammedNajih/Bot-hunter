@@ -4,3 +4,5 @@ user_agent
 requests
 uuid
 faker
+names
+secrets
