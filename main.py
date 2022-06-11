@@ -58,8 +58,8 @@ def masg(call):
 		sk = 0
 		gm = 0
 		ins = 0
-		uid = uuid4()
 		while True:
+			uid = uuid4()
 			user = Faker().email().split("@")[0]
 			email = user+"@gmail.com"
 			url = 'https://android.clients.google.com/setup/checkavail'
