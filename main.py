@@ -6,6 +6,7 @@ from telebot import types
 from user_agent import generate_user_agent
 import logging
 from config import *
+from InstagramIG import *
 import json
 from flask import Flask, request
 r = "1234567890"
@@ -83,26 +84,26 @@ def masg(call):
 				req= requests.post(url, headers=headers, data=data).json()
 				if req['message'] == 'The password you entered is incorrect. Please try again.' or req['message'] == 'The password you entered is incorrect. Please try again or log in with Facebook.':
 					ht += 1
-					try:
-						head = {'HOST': "www.instagram.com",'KeepAlive' : 'True','user-agent' : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36",'Cookie': 'cookie','Accept' : "*/*",'ContentType' : "application/x-www-form-urlencoded","X-Requested-With" : "XMLHttpRequest","X-IG-App-ID": "936619743392459","X-Instagram-AJAX" : "missing","X-CSRFToken" : "missing","Accept-Language" : "en-US,en;q=0.9"}
-						cookie = secrets.token_hex(8)*2
-						user = azoz.split("@")[0]
-						i=requests.get(f'https://www.instagram.com/{user}/?__a=1',headers=head).json()
-						followers =i['graphql']['user']['edge_followed_by']['count']
-						following =i['graphql']['user']['edge_follow']['count']
-						id=i['graphql']['user']['id']
-						bio = str(i['graphql']['user']['biography'])
-						isp = str(i['graphql']['user']['is_private'])
-						name = str(i['graphql']['user']['full_name'])
-						posts = str(i['graphql']['user']['edge_owner_to_timeline_media']['count'])
-						pro = str(i['graphql']['user']['profile_pic_url'])
+					head = {'HOST': "www.instagram.com",'KeepAlive' : 'True','user-agent' : "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36",'Cookie': 'cookie','Accept' : "*/*",'ContentType' : "application/x-www-form-urlencoded","X-Requested-With" : "XMLHttpRequest","X-IG-App-ID": "936619743392459","X-Instagram-AJAX" : "missing","X-CSRFToken" : "missing","Accept-Language" : "en-US,en;q=0.9"}
+					cookie = secrets.token_hex(8)*2
+					user = azoz.split("@")[0]
+					i=requests.get(f'https://www.instagram.com/{user}/?__a=1',headers=head)
+					if "graphql" in i.text:
+						followers =i.json()['graphql']['user']['edge_followed_by']['count']
+						following =i.json()['graphql']['user']['edge_follow']['count']
+						id=i.json()['graphql']['user']['id']
+						bio = str(i.json()['graphql']['user']['biography'])
+						isp = str(i.json()['graphql']['user']['is_private'])
+						name = str(i.json()['graphql']['user']['full_name'])
+						posts = str(i.json()['graphql']['user']['edge_owner_to_timeline_media']['count'])
+						pro = str(i.json()['graphql']['user']['profile_pic_url'])
 						lok = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")
 						iok = lok.json()
 						date = str(iok['data'])
 						GDO =(f"""⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ɴᴀᴍᴇ » {name}\n⌯ ᴜsᴇʀɴᴀᴍᴇ » {user}\n⌯ ᴇᴍᴀɪʟ » {azoz}\n⌯ ғᴏʟʟᴏᴡᴇʀs » {followers}\n⌯ ғᴏʟʟᴏᴡɪɴɢ » {following}\n⌯ ᴅᴀᴛᴇ » {date}\n⌯ ɪᴅ » {id}\n⌯ ᴘᴏsᴛs » {posts}\n⌯ ᴘʀɪvᴀᴛᴇ » {isp}\n⌯ ʙɪᴏ » {bio}\n⌯ 𝙻𝙸𝙽𝚔 » https://www.instagram.com/{user}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDO00 - @GDO_0 .""")
 						bot.send_photo(call.message.chat.id,pro,GDO)
-					except:
-					bot.send_message(call.message.chat.id,text=f"""\n⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ᴇᴍᴀɪʟ » {azoz}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDOTools .""")
+					else:
+						bot.send_message(call.message.chat.id,text=f"""\n⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ᴇᴍᴀɪʟ » {azoz}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDOTools .""")
 				else:
 					bn += 1
  		 	else:
