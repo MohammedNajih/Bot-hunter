@@ -6,7 +6,6 @@ from telebot import types
 from user_agent import generate_user_agent
 import logging
 from config import *
-from InstagramIG import *
 import json
 from flask import Flask, request
 r = "1234567890"
@@ -107,17 +106,17 @@ def masg(call):
 				else:
 					bn += 1
 			else:
- 		 		bd += 1
- 		 		mas = types.InlineKeyboardMarkup(row_width=2)
-				A = types.InlineKeyboardButton(f'▩ 𝙷𝙸𝚃 » {ht}',callback_data="1x")
-				E = types.InlineKeyboardButton(f'▩ 𝙱𝙰𝙳 » {bd}', callback_data="1x")
-				B = types.InlineKeyboardButton(f'▩ 𝙱𝙰𝙽 » {bn}', callback_data="1x")
-				R = types.InlineKeyboardButton(f'▩ ᴇᴍᴀɪʟ » {azoz}', callback_data="1x")
-				M = types.InlineKeyboardButton('𝗱𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿', url='https://t.me/GDO00')
-				mas.add(A,E,B,R,M)
-				bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text=" ⌯ 𝙲𝙷ea𝚔 ᴇᴍᴀɪʟ 𝙸𝙽𝚂𝚃𝙰𝙶𝚁𝙰𝙼 ⸙ ",reply_markup=mas)
+					bd += 1
+					mas = types.InlineKeyboardMarkup(row_width=2)
+					A = types.InlineKeyboardButton(f'▩ 𝙷𝙸𝚃 » {ht}',callback_data="1x")
+					E = types.InlineKeyboardButton(f'▩ 𝙱𝙰𝙳 » {bd}', callback_data="1x")
+					B = types.InlineKeyboardButton(f'▩ 𝙱𝙰𝙽 » {bn}', callback_data="1x")
+					R = types.InlineKeyboardButton(f'▩ ᴇᴍᴀɪʟ » {azoz}', callback_data="1x")
+					M = types.InlineKeyboardButton('𝗱𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿', url='https://t.me/GDO00')
+					mas.add(A,E,B,R,M)
+					bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text=" ⌯ 𝙲𝙷ea𝚔 ᴇᴍᴀɪʟ 𝙸𝙽𝚂𝚃𝙰𝙶𝚁𝙰𝙼 ⸙ ",reply_markup=mas)
 	elif call.data =="F2":
-		    bot.send_message(message.chat.id, f" FUCTION SOON ️",reply_markup=mas)
+		    bot.send_message(message.chat.id,text=f" FUCTION SOON ️")
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
 def redirect_message():
     json_string = request.get_data().decode("utf-8")
