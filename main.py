@@ -76,7 +76,6 @@ def masg(call):
 					info=f"https://soud.me/api/Instagram?username={user}"
 					req= requests.get(info).json()
 					bio=req["info"]["bio"]
-					psots =req["info"]["media"]
 					name=req["info"]["name"]
 					followers=req["info"]["followers"]
 					following=req["info"]["following"]
@@ -88,7 +87,7 @@ def masg(call):
 					resp = requests.get(f"https://o7aa.pythonanywhere.com/?id={id}")  
 					reep = resp.json()
 					date = reep['data']
-					GDO =(f"""𝙷𝙸 𝙸𝙽f𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 𝙰𝙲𝙲𝙾𝚄𝙽𝚃 ⎙\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ɴᴀᴍᴇ » {name}\n⌯ ᴜsᴇʀɴᴀᴍᴇ » {user}\n⌯ ғᴏʟʟᴏᴡᴇʀs » {followers}\n⌯ ғᴏʟʟᴏᴡɪɴɢ » {following}\n⌯ ᴅᴀᴛᴇ » {date}\n⌯ ɪᴅ » {id}\n⌯ ᴘᴏsᴛs » {posts}\n⌯ ᴠᴇʀɪғɪᴇᴅ » {isv}\n⌯ ᴘʀɪvᴀᴛᴇ » {isp}\n⌯ ʙɪᴏ » {bio}\n⌯ 𝙻𝙸𝙽𝚔 » https://www.instagram.com/{user}\n⌯ 𝙻𝙸𝙽𝚔 » {link}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •""")
+					GDO =(f"""𝙷𝙸 𝙸𝙽f𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 𝙰𝙲𝙲𝙾𝚄𝙽𝚃 ⎙\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ɴᴀᴍᴇ » {name}\n⌯ ᴜsᴇʀɴᴀᴍᴇ » {user}\n⌯ ғᴏʟʟᴏᴡᴇʀs » {followers}\n⌯ ғᴏʟʟᴏᴡɪɴɢ » {following}\n⌯ ᴅᴀᴛᴇ » {date}\n⌯ ɪᴅ » {id}\n⌯ ᴘᴏsᴛs »\n⌯ ᴠᴇʀɪғɪᴇᴅ » {isv}\n⌯ ᴘʀɪvᴀᴛᴇ » {isp}\n⌯ ʙɪᴏ » {bio}\n⌯ 𝙻𝙸𝙽𝚔 » https://www.instagram.com/{user}\n⌯ 𝙻𝙸𝙽𝚔 » {link}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •""")
 					bot.send_message(call.message.chat.id,GDO)
 					#bot.send_message(call.message.chat.id,f'𝙷𝙸 𝙸𝙽f𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽 𝙰𝙲𝙲𝙾𝚄𝙽𝚃 ⎙\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ 𝐄𝐌𝐀𝐈𝐋 » {email}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •')
 			if res.json()['status'] == 'SUCCESS':
@@ -102,7 +101,7 @@ def masg(call):
 				R = types.InlineKeyboardButton(f'BAD : {sk}', callback_data="1x")
 				M = types.InlineKeyboardButton('المطور', url='https://t.me/GDO00')
 				mas.add(A,E,B,R,M)
-				bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="جاري الفحص النقاط ",reply_markup=mas)
+				bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text="START CHECKER",reply_markup=mas)
 				
 	elif call.data =="F2":
 		bot.send_message(message.chat.id, f" FUCTION SOON ️",reply_markup=mas)
