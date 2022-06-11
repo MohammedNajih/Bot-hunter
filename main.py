@@ -65,7 +65,7 @@ def masg(call):
 			url = 'https://android.clients.google.com/setup/checkavail'
 			h = {'Content-Length':'98','Content-Type':'text/plain; charset=UTF-8','Host':'android.clients.google.com','Connection':'Keep-Alive','user-agent':'GoogleLoginService/1.3(m0 JSS15J)',}
 			d = json.dumps({'username':user,'version':'3','firstName':'AbaLahb','lastName':'AbuJahl'})
-			res = requests.post(url,data=d,headers=h)
+			res = requests.post(url,data=d,headers=h);bot.send_message(call.message.chat.id,res.text) 
 			url1='https://i.instagram.com/api/v1/accounts/login/'
 			headers = {'User-Agent':'Instagram 113.0.0.39.122 Android (24/5.0; 515dpi; 1440x2416; huawei/google; Nexus 6P; angler; angler; en_US)',  'Accept':'*/*','Cookie':'missing','Accept-Encoding':'gzip, deflate','Accept-Language':'en-US','X-IG-Capabilities':'3brTvw==','X-IG-Connection-Type':'WIFI','Content-Type':'application/x-www-form-urlencoded; charset=UTF-8','Host':'i.instagram.com'}
 			data = {'uuid':uid,  'password':'@gdo00bot','username':email,'device_id':uid,'from_reg':'false','_csrftoken':'missing','login_attempt_countn':'0'}
