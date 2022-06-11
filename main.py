@@ -76,6 +76,7 @@ def masg(call):
 					info=f"https://soud.me/api/Instagram?username={user}"
 					req= requests.get(info).json()
 					bio=req["info"]["bio"]
+					psots =req["info"]["media"]
 					name=req["info"]["name"]
 					followers=req["info"]["followers"]
 					following=req["info"]["following"]
