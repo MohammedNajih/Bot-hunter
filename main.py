@@ -6,7 +6,6 @@ from telebot import types
 from user_agent import generate_user_agent
 import logging
 from config import *
-from InstagramIG import *
 import json
 from flask import Flask, request
 r = "1234567890"
@@ -101,20 +100,21 @@ def masg(call):
 						iok = lok.json()
 						date = str(iok['data'])
 						GDO =(f"""⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ɴᴀᴍᴇ » {name}\n⌯ ᴜsᴇʀɴᴀᴍᴇ » {user}\n⌯ ᴇᴍᴀɪʟ » {azoz}\n⌯ ғᴏʟʟᴏᴡᴇʀs » {followers}\n⌯ ғᴏʟʟᴏᴡɪɴɢ » {following}\n⌯ ᴅᴀᴛᴇ » {date}\n⌯ ɪᴅ » {id}\n⌯ ᴘᴏsᴛs » {posts}\n⌯ ᴘʀɪvᴀᴛᴇ » {isp}\n⌯ ʙɪᴏ » {bio}\n⌯ 𝙻𝙸𝙽𝚔 » https://www.instagram.com/{user}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDO00 - @GDO_0 .""")
-						bot.send_photo(message.chat.id,pro,GDO)
+						bot.send_photo(call.message.chat.id,pro,GDO)
 					except:
-					bot.send_message(message.chat.id,text=f"""\n⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ᴇᴍᴀɪʟ » {azoz}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDOTools .""")
+					bot.send_message(call.message.chat.id,text=f"""\n⎙ ʜɪ ɴᴇᴡ ᴇᴍᴀɪʟ ɪɴsᴛᴀ ʙʏ ĞĐØ ⌯\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n⌯ ᴇᴍᴀɪʟ » {azoz}\n• ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ •\n◔͜͡◔ ʙʏ » @GDOTools .""")
 				else:
 					bn += 1
  		 	else:
  		 		bd += 1
- 		 		h = types.InlineKeyboardMarkup()
- 		 		dd = types.InlineKeyboardButton(text = " 𝗱𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿 ◔͜͡◔", url = "t.me/GDO00BOT")
- 		 		sd = types.InlineKeyboardButton(text ="• 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 •" , url = "t.me/GDOTools")
- 		 		h.add(dd,sd)
- 		 		bot.edit_message_text(chat_id=message.chat.id,message_id=message.message_id,text=f"""\n⌯ 𝙲𝙷ea𝚔 ᴇᴍᴀɪʟ 𝙸𝙽𝚂𝚃𝙰𝙶𝚁𝙰𝙼 ⸙\n•━━━━━━━━━━━━━━•\n▩ 𝙷𝙸𝚃 » {ht}\n▩ 𝙱𝙰𝙳 » {bd}\n▩ 𝙱𝙰𝙽 » {bn}\n▩ ᴇᴍᴀɪʟ » {azoz}\n•━━━━━━━━━━━━━━•""",parse_mode = "markdown",reply_markup=h)
- 			
-
+ 		 		mas = types.InlineKeyboardMarkup(row_width=2)
+				A = types.InlineKeyboardButton(f'▩ 𝙷𝙸𝚃 » {ht}',callback_data="1x")
+				E = types.InlineKeyboardButton(f'▩ 𝙱𝙰𝙳 » {bd}', callback_data="1x")
+				B = types.InlineKeyboardButton(f'▩ 𝙱𝙰𝙽 » {bn}', callback_data="1x")
+				R = types.InlineKeyboardButton(f'▩ ᴇᴍᴀɪʟ » {azoz}', callback_data="1x")
+				M = types.InlineKeyboardButton('𝗱𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿', url='https://t.me/GDO00')
+				mas.add(A,E,B,R,M)
+				bot.edit_message_text(chat_id=call.message.chat.id,message_id=call.message.message_id,text=" ⌯ 𝙲𝙷ea𝚔 ᴇᴍᴀɪʟ 𝙸𝙽𝚂𝚃𝙰𝙶𝚁𝙰𝙼 ⸙ ",reply_markup=mas)
 	elif call.data =="F2":
 		    bot.send_message(message.chat.id, f" FUCTION SOON ️",reply_markup=mas)
 @server.route(f"/{BOT_TOKEN}", methods=["POST"])
